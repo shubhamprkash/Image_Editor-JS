@@ -141,6 +141,11 @@ body{
     border:  2px solid lightgray;
 }
 
+.controls .reset-filter:hover{
+    color: #fff;
+    background: blue;
+  }
+
 .controls .choose-img{
     
     background-color: rgb(79, 79, 79);

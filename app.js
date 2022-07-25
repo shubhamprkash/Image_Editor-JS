@@ -9,7 +9,8 @@ const inputFile =document.querySelector(".file-input"),
  rotateOptions = document.querySelectorAll(".rotate button")
  previewImg = document.querySelector(".preview-img img"),
  chooseImgBtn = document.querySelector(".choose-img"),
- resetBtn = document.querySelector(".reset-filter")
+ resetBtn = document.querySelector(".reset-filter"),
+ saveBtn = document.querySelector(".save-img");
 ;
 
 let brightness = 100, saturation = 100, inversion = 0, 
@@ -28,6 +29,7 @@ const loadImg = ()=>{
     // console.log(file)
     previewImg.src = URL.createObjectURL(file);
     previewImg.addEventListener("load",()=> {
+        resetBtn.click();
         container.classList.remove("disable");
     })
 }
@@ -107,9 +109,31 @@ function resetFilter(){
     filterOptions[0].click();
     applyFilters();
 }
+function saveImg(){
+   // console.log("Save Btn clicked!!")
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = previewImg.naturalWidth;
+    canvas.height = previewImg.naturalHeight;
+    
+    ctx.filter = `brightness(${brightness}%) saturate(${saturation}%) 
+                  invert(${inversion}%) grayscale(${grayscale}%)`;
+    ctx.translate(canvas.width/2, canvas.height/2);
+        if(rotate !== 0){
+            ctx.rotate(rotate * Math.PI / 180);
+        }
+    ctx.scale(flipHorizontal, flipVertical);
+    ctx.drawImage(previewImg, -canvas.width/2, -canvas.height/2, canvas.width, canvas.height);
+    // document.appendChild(canvas);
+
+    const downloadLink = document.createElement("a");
+    downloadLink.download = "NewImage.jpg";
+    downloadLink.href = canvas.toDataURL();
+    downloadLink.click();
+}
 
 inputFile.addEventListener("change", loadImg);
 filterSlider.addEventListener("input", updateFilter);
 resetBtn.addEventListener("click", resetFilter);
 chooseImgBtn.addEventListener("click", ()=>inputFile.click());
-
+saveBtn.addEventListener("click", saveImg);
