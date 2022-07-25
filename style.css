@@ -63,18 +63,22 @@ body{
 
 .editor-panel button{
     height: 40px;
-    font-size: 0.8rem;
-    color: darkgray;
+    font-size: 0.9rem;
+    color: rgb(118, 115, 115);
     margin-bottom: 8px;
     background: #fff;
-    border: solid 1px darkgray;
+    border: solid 2px rgb(118, 115, 115);
     border-radius: 3px;
 }
 
 .editor-panel .filter button{
     width: calc(100% / 2 - 4px);
 }
-
+.editor-panel button:hover{
+    background: #f5f5f5;
+    color: black;
+    font-weight: bolder;
+  }
 .filter button.active{
     color: white;
     background-color: blue;
@@ -137,8 +141,8 @@ body{
 }
 
 .controls .reset-filter{
-    color: darkgrey;
-    border:  2px solid lightgray;
+    color: rgb(79, 79, 79);
+    border:  2px solid rgb(115, 115, 115);
 }
 
 .controls .reset-filter:hover{
@@ -148,7 +152,7 @@ body{
 
 .controls .choose-img{
     
-    background-color: rgb(79, 79, 79);
+    background-color: rgb(0, 0, 0);
 }
 
 .controls .save-img{
