@@ -1,0 +1,24 @@
+{
+    "name":"Image Editor",
+    "short_name":"Img-Editor",
+    "orientation": "portrait",
+    "start_url":"/",
+    "scope": ".",
+    "id":"/",
+    "author":"Shubham Prakash",
+    "description":"Image Editing Software © Shubham Prakash",
+    "icons":[{
+                "src":"./favicons/android-chrome-192x192.png",
+                "sizes":"192x192",
+                "type":"image/png"
+            },
+    {
+        "src":"./favicons/android-chrome-512x512.png",
+        "sizes":"512x512",
+        "type":"image/png"
+    }],
+
+    "theme_color":"skyblue",
+    "background_color":"#ffffff",
+    "display":"standalone"
+}

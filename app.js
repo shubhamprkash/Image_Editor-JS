@@ -1,5 +1,5 @@
 
-
+registerSW();
 const inputFile =document.querySelector(".file-input"),
  filterOptions = document.querySelectorAll(".filter button"),
  filterName = document.querySelector(".filter-info .name"),
@@ -31,6 +31,7 @@ const loadImg = ()=>{
     previewImg.addEventListener("load",()=> {
         resetBtn.click();
         container.classList.remove("disable");
+        
     })
 }
 
@@ -137,3 +138,13 @@ filterSlider.addEventListener("input", updateFilter);
 resetBtn.addEventListener("click", resetFilter);
 chooseImgBtn.addEventListener("click", ()=>inputFile.click());
 saveBtn.addEventListener("click", saveImg);
+
+async function registerSW() {
+    if ('serviceWorker' in navigator) {
+      try {
+        await navigator.serviceWorker.register('./sw.js');
+      } catch (e) {
+        console.log(`SW registration failed`);
+      }
+    }
+}
